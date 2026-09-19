@@ -13,6 +13,12 @@ export default function SmoothScroll() {
     });
 
     let rafId = 0;
+    const notifyScroll = () => {
+      window.dispatchEvent(new Event("app-scroll"));
+    };
+
+    lenis.on("scroll", notifyScroll);
+
     const raf = (time: number) => {
       lenis.raf(time);
       rafId = requestAnimationFrame(raf);
@@ -34,6 +40,7 @@ export default function SmoothScroll() {
     return () => {
       cancelAnimationFrame(rafId);
       document.removeEventListener("click", handleAnchor);
+      lenis.off("scroll", notifyScroll);
       lenis.destroy();
     };
   }, []);

@@ -301,7 +301,7 @@ export default function Hero() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="mt-7 font-code text-sm sm:text-base text-fog"
           >
-            <span className="text-accent">$</span> whoami — hi, I&apos;m
+            <span className="text-accent">$</span> whoami, hi, I&apos;m
           </motion.p>
 
           <h1 className="mt-2 font-display font-bold tracking-tight leading-[0.95]">
@@ -348,8 +348,8 @@ export default function Hero() {
             transition={{ delay: 0.55, duration: 0.8 }}
             className="mt-5 max-w-xl text-[15px] sm:text-base leading-relaxed text-fog"
           >
-            I design and ship production <span className="text-slate-200 font-medium">AI-powered web applications</span> end-to-end —
-            LLM-backed backends, agentic workflows, RAG pipelines and responsive React/Next.js frontends that drive measurable business impact.
+            I design and ship production <span className="text-slate-200 font-medium">AI-powered web applications</span> end-to-end,
+            from LLM-backed backends and agentic workflows to RAG pipelines and responsive React/Next.js frontends that drive measurable business impact.
           </motion.p>
 
           <motion.div
@@ -380,7 +380,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* RIGHT — terminal */}
+        {/* RIGHT - terminal */}
         <div className="relative">
           <CodeTerminal />
         </div>

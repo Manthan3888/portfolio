@@ -4,6 +4,7 @@ import { useRef, type MouseEvent } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { FaArrowRight, FaGithub, FaRegCircleCheck } from "react-icons/fa6";
 import { projects, profile } from "@/data/portfolio";
+import { projectSlug } from "@/lib/projectSlug";
 import Reveal from "./ui/Reveal";
 import ProjectVisual from "./ProjectVisual";
 
@@ -30,7 +31,10 @@ function ProjectRow({ project, flip }: { project: (typeof projects)[number]; fli
   };
 
   return (
-    <div className="relative grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+    <div
+      id={`project-${projectSlug(project.name)}`}
+      className="relative scroll-mt-28 grid lg:grid-cols-2 gap-8 lg:gap-14 items-center"
+    >
       {/* visual */}
       <Reveal
         className={flip ? "lg:order-2" : ""}

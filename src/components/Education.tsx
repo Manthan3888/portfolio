@@ -95,7 +95,7 @@ export default function Education() {
 
               <div className="mt-8 rounded-xl border border-dashed border-white/15 bg-white/[0.02] p-5 text-center">
                 <p className="text-sm text-slate-300">
-                  Continuously learning — currently deepening <span className="text-accent font-medium">multi-agent systems</span> &
+                  Continuously learning, currently deepening <span className="text-accent font-medium">multi-agent systems</span> &
                   production LLM ops.
                 </p>
               </div>

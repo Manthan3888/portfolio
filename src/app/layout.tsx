@@ -20,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Manthan Rajani — AI Full Stack Engineer",
+  title: "Manthan Rajani - AI Full Stack Engineer",
   description:
     "AI Full Stack Engineer building agentic workflows, RAG pipelines, predictive ML and production-grade Next.js / FastAPI applications end-to-end.",
   keywords: [
@@ -37,15 +37,15 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Manthan Rajani" }],
   openGraph: {
-    title: "Manthan Rajani — AI Full Stack Engineer",
+    title: "Manthan Rajani - AI Full Stack Engineer",
     description:
-      "I build AI automation, agentic systems and full-stack products that survive launch — LLM backends to Next.js frontends.",
+      "I build AI automation, agentic systems and full-stack products that survive launch, from LLM backends to Next.js frontends.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Manthan Rajani — AI Full Stack Engineer",
+    title: "Manthan Rajani - AI Full Stack Engineer",
     description:
       "Agentic AI, RAG pipelines and production full-stack apps. Python, FastAPI, Next.js and LangChain.",
   },

@@ -87,7 +87,7 @@ export default function Services() {
           </div>
           <Reveal delay={0.16}>
             <p className="text-fog max-w-sm text-sm leading-relaxed">
-              Six ways I can plug into your team — from the first scope conversation to production monitoring.
+              Six ways I can plug into your team, from the first scope conversation to production monitoring.
             </p>
           </Reveal>
         </div>

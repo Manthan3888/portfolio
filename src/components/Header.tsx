@@ -14,10 +14,14 @@ export default function Header() {
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 28, mass: 0.4 });
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("app-scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("app-scroll", onScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -47,6 +51,16 @@ export default function Header() {
     };
   }, [open]);
 
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => {
+      if (mq.matches) setOpen(false);
+    };
+    closeOnDesktop();
+    mq.addEventListener("change", closeOnDesktop);
+    return () => mq.removeEventListener("change", closeOnDesktop);
+  }, []);
+
   return (
     <>
       <motion.header
@@ -59,8 +73,10 @@ export default function Header() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div
-            className={`flex items-center justify-between rounded-2xl px-4 sm:px-5 py-3 transition-all duration-500 ${
-              scrolled ? "glass shadow-[0_18px_50px_-20px_rgba(0,0,0,0.8)]" : "bg-transparent border border-transparent"
+            className={`flex items-center justify-between rounded-2xl border px-4 sm:px-5 py-3 transition-all duration-500 backdrop-blur-xl ${
+              scrolled
+                ? "border-white/18 bg-ink-900/94 shadow-[0_18px_50px_-20px_rgba(0,0,0,0.85)]"
+                : "border-white/12 bg-ink-900/88 lg:bg-transparent lg:border-transparent lg:backdrop-blur-none"
             }`}
           >
             {/* logo */}
@@ -77,46 +93,32 @@ export default function Header() {
               </span>
             </a>
 
-            {/* desktop nav */}
-            <nav className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`relative px-3.5 py-2 text-sm font-medium rounded-full transition-colors ${
-                    active === link.href ? "text-white" : "text-fog hover:text-white"
-                  }`}
-                >
-                  {active === link.href && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 rounded-full bg-white/[0.07] border border-white/10"
-                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                    />
-                  )}
-                  <span className="relative">{link.label}</span>
-                </a>
-              ))}
-            </nav>
+            <div className="ml-auto flex items-center gap-2 pl-4">
+              <nav className="hidden lg:flex items-center gap-1">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className={`relative px-3.5 py-2 text-sm font-medium rounded-full transition-colors ${
+                      active === link.href ? "text-white" : "text-fog hover:text-white"
+                    }`}
+                  >
+                    {active === link.href && (
+                      <motion.span
+                        layoutId="nav-pill"
+                        className="absolute inset-0 rounded-full bg-white/[0.07] border border-white/10"
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    <span className="relative">{link.label}</span>
+                  </a>
+                ))}
+              </nav>
 
-            <div className="flex items-center gap-2.5">
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub profile"
-                className="icon-btn !w-10 !h-10 hidden sm:inline-flex"
-              >
-                <FaGithub className="text-lg" />
-              </a>
-              <button onClick={openCalendly} className="btn-primary !py-2.5 !px-4 !text-[13px] hidden md:inline-flex">
-                <FaRegCalendarCheck className="text-xs" />
-                Let&apos;s talk
-              </button>
               <button
                 onClick={() => setOpen(true)}
                 aria-label="Open menu"
-                className="icon-btn !w-10 !h-10 lg:hidden"
+                className="icon-btn !w-10 !h-10 lg:!hidden"
               >
                 <FaBars />
               </button>

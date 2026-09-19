@@ -12,6 +12,7 @@ import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollFooterPrompt from "@/components/ScrollFooterPrompt";
 
 export default function HomePage() {
   return (
@@ -30,6 +31,7 @@ export default function HomePage() {
       <Education />
       <Contact />
       <Footer />
+      <ScrollFooterPrompt />
     </main>
   );
 }

@@ -12,7 +12,7 @@ export const profile = {
   calendly: "https://calendly.com/manthanrajani-work/30min",
   available: "Available for freelance & full-time roles",
   summary:
-    "AI Full Stack Engineer with hands-on experience designing and shipping production AI-powered web applications end-to-end — from LLM-backed backend services to responsive React/Next.js frontends. Skilled in building agentic workflows, RAG pipelines, and predictive ML models, and turning them into scalable full-stack products used in production.",
+    "AI Full Stack Engineer with hands-on experience designing and shipping production AI-powered web applications end-to-end, from LLM-backed backend services to responsive React/Next.js frontends. Skilled in building agentic workflows, RAG pipelines, and predictive ML models, and turning them into scalable full-stack products used in production.",
   summary2:
     "Delivered measurable business impact including 20+ hours reclaimed weekly per client, an 80% cut in manual order processing, and a 24/7 voice AI system handling 1,000+ monthly queries with zero human touchpoints.",
 };
@@ -166,7 +166,7 @@ export const services: Service[] = [
     index: "03",
     title: "Full-Stack Web Development",
     description:
-      "Production-ready Next.js, React, Node.js and FastAPI apps — SSR, REST APIs, auth and dynamic UI included.",
+      "Production-ready Next.js, React, Node.js and FastAPI apps: SSR, REST APIs, auth and dynamic UI included.",
     icon: "browser",
     subject: "Full-Stack Development",
     points: ["Next.js / React", "FastAPI / Node", "PostgreSQL / MongoDB"],
@@ -175,7 +175,7 @@ export const services: Service[] = [
     index: "04",
     title: "Predictive ML & Data",
     description:
-      "Complete ML pipelines — cleaning, feature engineering, training and hyperparameter tuning on real datasets.",
+      "Complete ML pipelines: cleaning, feature engineering, training and hyperparameter tuning on real datasets.",
     icon: "chart",
     subject: "Machine Learning",
     points: ["Scikit-Learn", "NumPy / Pandas", "Computer Vision"],
@@ -184,7 +184,7 @@ export const services: Service[] = [
     index: "05",
     title: "Mobile App Development",
     description:
-      "React Native apps for both sides of a marketplace — customer and provider — with payments and real-time chat.",
+      "React Native apps for both sides of a marketplace (customer and provider) with payments and real-time chat.",
     icon: "phone",
     subject: "Mobile App Development",
     points: ["React Native", "Real-time messaging", "Payments & RBAC"],
@@ -236,7 +236,7 @@ export const projects: Project[] = [
     icon: "doc",
     accent: "#39e0ff",
     bullets: [
-      "Full-stack platform extracting structured data — policy details, premiums, classification tables, exclusions, officer info — from complex workers' compensation insurance PDFs.",
+      "Full-stack platform extracting structured data (policy details, premiums, classification tables, exclusions, officer info) from complex workers' compensation insurance PDFs.",
       "Delivered accurate structured extraction with PyMuPDF, the OpenAI API and Pydantic schemas, cutting manual insurance data-entry time significantly.",
       "Built an interactive Next.js/React PDF viewer with field-level highlights for auditability, backed by a secure FastAPI + JWT authentication layer.",
     ],
@@ -266,7 +266,7 @@ export const projects: Project[] = [
     icon: "mobile",
     accent: "#c792ff",
     bullets: [
-      "Built two React Native apps connecting families with verified in-home care providers — a client app for browsing/booking/paying and a provider app for managing jobs and earnings.",
+      "Built two React Native apps connecting families with verified in-home care providers: a client app for browsing/booking/paying and a provider app for managing jobs and earnings.",
       "Developed a Node.js REST API with real-time messaging, payments and role-based authentication powering both apps.",
     ],
     tech: ["React Native", "Node.js", "Express", "MongoDB", "Mongoose", "Real-time Comms", "Payments", "RBAC"],
@@ -306,7 +306,7 @@ export const experience: Experience[] = [
     mode: "Remote",
     bullets: [
       "Engineered Python scripts and built predictive ML models with NumPy, Pandas and Scikit-Learn on real-world production datasets.",
-      "Owned the full ML pipeline end-to-end — data cleaning, feature engineering, model training, hyperparameter tuning and evaluation.",
+      "Owned the full ML pipeline end-to-end: data cleaning, feature engineering, model training, hyperparameter tuning and evaluation.",
       "Designed and deployed agentic AI workflows and automation solutions that eliminated repetitive manual work, reclaiming 20+ hours per week for client teams.",
       "Partnered with senior developers on REST API integration and data analysis to support downstream ML and reporting needs.",
     ],

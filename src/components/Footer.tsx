@@ -1,12 +1,12 @@
 "use client";
 
-import { FaGithub, FaLinkedinIn, FaEnvelope, FaArrowUp, FaRegCalendarCheck, FaHeart } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn, FaEnvelope, FaArrowUp, FaRegCalendarCheck } from "react-icons/fa6";
 import { navLinks, profile } from "@/data/portfolio";
 import { openCalendly } from "@/lib/calendly";
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/[0.07] bg-ink-900/70">
+    <footer id="site-footer" className="relative border-t border-white/[0.07] bg-ink-900/70">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 py-14">
         <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
           {/* brand */}
@@ -89,9 +89,6 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/[0.07] pt-7">
           <p className="text-xs text-fog">© {new Date().getFullYear()} Manthan Rajani. All rights reserved.</p>
-          <p className="flex items-center gap-1.5 text-xs text-fog">
-            Built with <FaHeart className="text-accent text-[10px]" /> using Next.js, Tailwind CSS &amp; Framer Motion
-          </p>
           <a
             href="#home"
             aria-label="Back to top"
