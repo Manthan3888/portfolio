@@ -117,8 +117,8 @@ export const skillCategories: SkillCategory[] = [
   {
     title: "Databases",
     icon: "database",
-    blurb: "Relational, document and vector storage, modeled right.",
-    skills: ["PostgreSQL", "MongoDB", "SQL", "NoSQL", "Vector Databases"],
+    blurb: "Relational and document storage, modeled right.",
+    skills: ["PostgreSQL", "MongoDB", "SQL", "NoSQL"],
   },
   {
     title: "Cloud, DevOps & Tools",

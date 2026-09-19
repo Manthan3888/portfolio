@@ -10,12 +10,27 @@ import {
 import { navLinks, profile } from "@/data/portfolio";
 import { openCalendly } from "@/lib/calendly";
 
-function FooterMarqueeItem() {
+function FooterMarqueeDot() {
   return (
-    <span className="mx-8 inline-flex shrink-0 items-center gap-4 whitespace-nowrap font-display text-[clamp(3rem,14vw,8.25rem)] font-bold uppercase leading-none tracking-[-0.03em] sm:mx-12 sm:gap-5 md:mx-14 md:gap-6">
-      <span className="text-white/[0.08]">MANTHAN RAJANI</span>
-      <span className="text-white/[0.14]">·</span>
-      <span className="text-white/[0.08]">AI FULL STACK DEVELOPER</span>
+    <span
+      className="inline-flex shrink-0 items-center justify-center px-[0.45em] text-white/[0.14] leading-none"
+      aria-hidden
+    >
+      ·
+    </span>
+  );
+}
+
+const footerMarqueePhraseClass =
+  "text-white/[0.08] tracking-[-0.03em]";
+
+function FooterMarqueeCycle() {
+  return (
+    <span className="inline-flex shrink-0 items-center whitespace-nowrap font-display text-[clamp(3rem,14vw,8.25rem)] font-bold uppercase leading-none">
+      <FooterMarqueeDot />
+      <span className={footerMarqueePhraseClass}>MANTHAN RAJANI</span>
+      <FooterMarqueeDot />
+      <span className={footerMarqueePhraseClass}>AI FULL STACK DEVELOPER</span>
     </span>
   );
 }
@@ -36,9 +51,7 @@ function FooterMarquee() {
         <div className="flex animate-marquee-footer">
           {[0, 1].map((dup) => (
             <div key={dup} className="flex items-center" aria-hidden={dup === 1}>
-              <FooterMarqueeItem />
-              <FooterMarqueeItem />
-              <FooterMarqueeItem />
+              <FooterMarqueeCycle />
             </div>
           ))}
         </div>

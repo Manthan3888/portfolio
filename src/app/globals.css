@@ -395,7 +395,7 @@ button.tag {
   animation: marquee-reverse 52s linear infinite;
 }
 .animate-marquee-footer {
-  animation: marquee 38s linear infinite;
+  animation: marquee 22s linear infinite;
 }
 .marquee-pause:hover .animate-marquee,
 .marquee-pause:hover .animate-marquee-reverse {
