@@ -36,13 +36,13 @@ export default function Education() {
                 key={ed.school}
                 variants={staggerItem}
                 data-hover
-                className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-ice/40 hover:shadow-[0_26px_60px_-28px_rgba(57,224,255,0.45)]"
+                className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-5 sm:p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-ice/40 hover:shadow-[0_26px_60px_-28px_rgba(57,224,255,0.45)]"
               >
                 <div className="flex items-start gap-5">
                   <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-ice/10 border border-ice/25 text-xl text-ice transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
                     <FaGraduationCap />
                   </span>
-                  <div className="flex-1">
+                  <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1 justify-between">
                       <h3 className="font-display text-lg font-bold text-white">{ed.degree}</h3>
                       <span className="inline-flex items-center gap-1.5 font-code text-[11px] text-fog">
@@ -63,7 +63,7 @@ export default function Education() {
 
           {/* certifications */}
           <Reveal delay={0.12} y={40}>
-            <div className="h-full rounded-2xl gradient-border p-7 sm:p-8">
+            <div className="h-full min-w-0 rounded-2xl gradient-border p-5 sm:p-8">
               <div className="flex items-center gap-3 mb-6">
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 border border-accent/25 text-accent">
                   <FaAward />

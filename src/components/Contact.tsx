@@ -40,15 +40,15 @@ export default function Contact() {
               transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }}
             />
 
-            <div className="relative grid lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-14 items-start">
-              <div>
+            <div className="relative grid min-w-0 lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-14 items-start">
+              <div className="min-w-0">
                 <div className="flex items-center gap-3">
                   <span className="font-code text-sm text-accent">07</span>
                   <span className="h-px w-10 bg-gradient-to-r from-accent to-transparent" />
                   <span className="eyebrow">Get in touch</span>
                 </div>
 
-                <h2 className="mt-5 font-display text-4xl sm:text-5xl lg:text-[3.6rem] font-bold leading-[1.04] tracking-tight text-white">
+                <h2 className="mt-5 font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.6rem] font-bold leading-[1.04] tracking-tight text-white text-balance break-words">
                   Have an idea worth <span className="text-gradient">automating</span>?
                 </h2>
                 <p className="mt-5 max-w-xl text-fog leading-relaxed">
@@ -61,19 +61,19 @@ export default function Contact() {
                     onClick={openCalendly}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
-                    className="btn-primary !px-7 !py-4 !text-base"
+                    className="btn-primary w-full sm:w-auto !px-7 !py-4 !text-base"
                   >
                     <FaRegCalendarCheck />
                     Schedule on Calendly
                     <FaArrowRight className="text-xs" />
                   </motion.button>
-                  <a href={`mailto:${profile.email}`} className="btn-ghost !px-7 !py-4 !text-base">
+                  <a href={`mailto:${profile.email}`} className="btn-ghost w-full sm:w-auto !px-7 !py-4 !text-base">
                     <FaPaperPlane className="text-xs" />
                     Email me directly
                   </a>
                 </div>
 
-                <div className="mt-8 flex items-center gap-3">
+                <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2">
                   <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="icon-btn">
                     <FaGithub className="text-lg" />
                   </a>
@@ -98,11 +98,11 @@ export default function Contact() {
                       <a
                         key={r.label}
                         href={r.href}
-                        className="flex items-center gap-3 text-sm text-slate-300 transition-colors hover:text-accent"
+                        className="flex min-w-0 items-center gap-3 text-sm text-slate-300 transition-colors hover:text-accent"
                       >
-                        <span className="text-accent">{r.icon}</span>
+                        <span className="text-accent shrink-0">{r.icon}</span>
                         <span className="text-[10px] uppercase tracking-[0.16em] text-fog w-24 shrink-0">{r.label}</span>
-                        <span className="truncate">{r.value}</span>
+                        <span className="min-w-0 break-all sm:break-normal sm:truncate">{r.value}</span>
                       </a>
                     ) : (
                       <div key={r.label} className="flex items-center gap-3 text-sm text-slate-300">
@@ -115,7 +115,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              <Reveal delay={0.12} y={36}>
+              <Reveal delay={0.12} y={36} className="min-w-0">
                 <ContactForm />
               </Reveal>
             </div>

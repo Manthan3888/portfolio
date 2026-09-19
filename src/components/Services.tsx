@@ -36,7 +36,7 @@ function ServiceCard({ s }: { s: (typeof services)[number] }) {
       href={`mailto:${profile.email}?subject=${encodeURIComponent(s.subject)}`}
       onMouseMove={onMove}
       data-hover
-      className="card-sheen group relative flex h-full flex-col rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-7 transition-all duration-500 hover:-translate-y-2 hover:border-accent/40 hover:shadow-[0_28px_70px_-28px_rgba(255,106,43,0.5)]"
+      className="card-sheen group relative flex h-full min-w-0 flex-col rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-5 sm:p-7 transition-all duration-500 hover:-translate-y-2 hover:border-accent/40 hover:shadow-[0_28px_70px_-28px_rgba(255,106,43,0.5)]"
     >
       <div className="flex items-center justify-between">
         <span className="font-code text-sm text-fog/70 group-hover:text-accent transition-colors">

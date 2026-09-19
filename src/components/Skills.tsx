@@ -117,7 +117,7 @@ function SkillsContent() {
 
         <div
           ref={mapRootRef}
-          className={activeSkill ? "skill-map-active relative" : "relative"}
+          className={activeSkill ? "skill-map-active relative overflow-x-clip" : "relative overflow-x-clip"}
           onMouseLeave={(event) => {
             const next = event.relatedTarget;
             if (next instanceof Node && mapRootRef.current?.contains(next)) return;

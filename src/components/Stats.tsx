@@ -14,12 +14,12 @@ export default function Stats() {
             <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-accent/20 blur-[90px]" />
             <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-ice/10 blur-[90px]" />
 
-            <div className="relative flex items-center gap-3 mb-10">
+            <div className="relative mb-10 flex min-w-0 flex-wrap items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/15 border border-accent/30 text-accent">
                 <FaArrowTrendUp />
               </span>
               <div>
-                <p className="font-display font-semibold text-white text-lg leading-none">Measurable business impact</p>
+                <p className="font-display text-lg font-semibold leading-snug text-white text-balance">Measurable business impact</p>
                 <p className="font-code text-xs text-fog mt-1.5">// results shipped to production, not demos</p>
               </div>
             </div>
@@ -28,7 +28,7 @@ export default function Stats() {
               {stats.map((s, i) => (
                 <Reveal key={s.label} delay={i * 0.1}>
                   <div
-                    className={`group relative ${
+                    className={`group relative min-w-0 ${
                       i % 2 === 1 ? "sm:border-l sm:border-white/10 sm:pl-6" : ""
                     } ${i !== 0 ? "lg:border-l lg:border-white/10 lg:pl-6" : ""}`}
                   >

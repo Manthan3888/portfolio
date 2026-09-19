@@ -66,7 +66,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="rounded-2xl border border-white/[0.1] bg-ink-950/45 p-6 sm:p-8 backdrop-blur-sm">
+    <div className="min-w-0 rounded-2xl border border-white/[0.1] bg-ink-950/45 p-6 sm:p-8 backdrop-blur-sm">
       <div className="flex items-center gap-3">
         <span className="font-code text-sm text-accent">08</span>
         <span className="h-px w-8 bg-gradient-to-r from-accent to-transparent" />

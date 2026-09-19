@@ -31,7 +31,7 @@ const facts = [
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 md:py-32 scroll-mt-24">
+    <section id="about" className="relative overflow-x-clip py-24 md:py-32 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-14 lg:gap-20 items-center">
           {/* text */}
@@ -62,10 +62,10 @@ export default function About() {
                   <div
                     key={p.label}
                     data-hover
-                    className="flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-3.5 text-sm text-slate-200 transition-all duration-300 hover:border-accent/40 hover:bg-accent/[0.06] hover:-translate-y-0.5"
+                    className="flex min-w-0 items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-3.5 text-sm text-slate-200 transition-all duration-300 hover:border-accent/40 hover:bg-accent/[0.06] hover:-translate-y-0.5"
                   >
-                    <span className="text-accent">{p.icon}</span>
-                    {p.label}
+                    <span className="shrink-0 text-accent">{p.icon}</span>
+                    <span className="min-w-0 break-words">{p.label}</span>
                   </div>
                 ))}
               </div>
@@ -119,7 +119,7 @@ export default function About() {
                         </span>
                         <div className="min-w-0">
                           <p className="text-[10px] uppercase tracking-[0.18em] text-fog">{f.label}</p>
-                          <p className="text-sm text-slate-100 font-medium truncate group-hover:text-accent transition-colors">
+                          <p className="text-sm text-slate-100 font-medium break-all sm:break-normal sm:truncate group-hover:text-accent transition-colors">
                             {f.value}
                           </p>
                         </div>
@@ -153,7 +153,7 @@ export default function About() {
               aria-hidden
               animate={{ y: [0, -14, 0] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-8 -right-4 sm:-right-8 rounded-2xl glass px-5 py-4 shadow-2xl"
+              className="relative mt-6 w-fit max-w-full rounded-2xl glass px-5 py-4 shadow-2xl lg:absolute lg:mt-0 lg:-bottom-8 lg:-right-8 lg:w-auto"
             >
               <p className="font-display text-2xl font-bold text-gradient-cool">80%</p>
               <p className="text-[11px] text-fog max-w-[140px]">less manual order processing</p>

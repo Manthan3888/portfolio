@@ -74,8 +74,8 @@ export default function Experience() {
                     data-hover
                     className="group rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-6 sm:p-8 transition-all duration-500 hover:border-accent/35 hover:shadow-[0_26px_60px_-28px_rgba(255,106,43,0.5)] hover:-translate-y-1"
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-                      <div>
+                    <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                      <div className="min-w-0">
                         <h3 className="font-display text-xl sm:text-2xl font-bold text-white">
                           {job.role}
                         </h3>

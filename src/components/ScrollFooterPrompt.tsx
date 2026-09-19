@@ -132,7 +132,7 @@ export default function ScrollFooterPrompt() {
           className="fixed inset-x-0 z-[45] pointer-events-none flex justify-center px-3 sm:px-4"
           style={{ bottom: "max(0.85rem, env(safe-area-inset-bottom))" }}
         >
-          <div className="scroll-prompt-bar pointer-events-auto flex w-[min(calc(100vw-1.25rem),21rem)] sm:w-[min(calc(100vw-1.25rem),24rem)] lg:w-[min(calc(100vw-1.25rem),37rem)] shrink-0 items-center gap-2 rounded-2xl border border-white/12 bg-ink-900/94 px-2.5 py-2 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.9)] backdrop-blur-md sm:gap-2.5 sm:px-3 sm:py-2.5">
+          <div className="scroll-prompt-bar pointer-events-auto flex w-full max-w-[21rem] shrink-0 items-center gap-2 rounded-2xl border border-white/12 bg-ink-900/94 px-2.5 py-2 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.9)] backdrop-blur-md sm:max-w-[24rem] sm:gap-2.5 sm:px-3 sm:py-2.5 lg:max-w-[37rem]">
             <LiveDot />
             <div className="min-w-0 flex-1">
               <AnimatePresence mode="wait">

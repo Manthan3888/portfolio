@@ -31,10 +31,34 @@ const particles = [
 ];
 
 const floatChips = [
-  { label: "LangChain", icon: <SiLangchain className="text-[#1fc9b2]" />, cls: "top-[-18px] left-[-26px]", dur: 5.4, delay: 0 },
-  { label: "RAG", icon: <SiN8N className="text-[#ea4b71]" />, cls: "top-[22%] right-[-34px]", dur: 6.2, delay: 0.7 },
-  { label: "FastAPI", icon: <SiFastapi className="text-[#35f0a8]" />, cls: "bottom-[26%] left-[-40px]", dur: 5.8, delay: 1.3 },
-  { label: "Next.js / React", icon: <FaReact className="text-[#39e0ff]" />, cls: "bottom-[-20px] right-[-18px]", dur: 6.6, delay: 0.4 },
+  {
+    label: "LangChain",
+    icon: <SiLangchain className="text-[#1fc9b2]" />,
+    cls: "top-2 left-0 max-lg:top-1 max-lg:left-1 lg:top-[-18px] lg:left-[-26px]",
+    dur: 5.4,
+    delay: 0,
+  },
+  {
+    label: "RAG",
+    icon: <SiN8N className="text-[#ea4b71]" />,
+    cls: "top-[22%] right-0 max-lg:hidden lg:right-[-34px]",
+    dur: 6.2,
+    delay: 0.7,
+  },
+  {
+    label: "FastAPI",
+    icon: <SiFastapi className="text-[#35f0a8]" />,
+    cls: "bottom-[26%] left-0 max-lg:hidden lg:left-[-40px]",
+    dur: 5.8,
+    delay: 1.3,
+  },
+  {
+    label: "Next.js / React",
+    icon: <FaReact className="text-[#39e0ff]" />,
+    cls: "bottom-2 right-0 max-lg:bottom-1 max-lg:right-1 lg:bottom-[-20px] lg:right-[-18px]",
+    dur: 6.6,
+    delay: 0.4,
+  },
   { label: "Python", icon: <FaPython className="text-[#ffd04f]" />, cls: "top-[48%] left-[-52px] hidden xl:flex", dur: 7, delay: 1.9 },
   { label: "Node.js", icon: <SiNodedotjs className="text-[#6fcf5a]" />, cls: "top-[-26px] right-[12%] hidden xl:flex", dur: 6, delay: 2.2 },
 ];
@@ -147,7 +171,7 @@ function CodeTerminal() {
       initial={{ opacity: 0, y: 44, rotateX: 12 }}
       animate={{ opacity: 1, y: 0, rotateX: 0 }}
       transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="relative w-full max-w-[540px] mx-auto"
+      className="relative mx-auto w-full max-w-[540px] overflow-x-clip px-1 sm:px-0"
       style={{ perspective: "1200px" }}
     >
       {/* glow under card */}
@@ -306,7 +330,7 @@ export default function Hero() {
 
           <h1 className="mt-2 font-display font-bold tracking-tight leading-[0.95]">
             <motion.span
-              className="block text-[clamp(2.9rem,8vw,5.6rem)] text-white"
+              className="block text-[clamp(2.35rem,8.5vw,5.6rem)] text-white"
               initial={{ y: 90, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
@@ -314,7 +338,7 @@ export default function Hero() {
               MANTHAN
             </motion.span>
             <motion.span
-              className="block text-[clamp(2.9rem,8vw,5.6rem)] text-gradient"
+              className="block text-[clamp(2.35rem,8.5vw,5.6rem)] text-gradient"
               initial={{ y: 90, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.9, delay: 0.38, ease: [0.22, 1, 0.36, 1] }}
@@ -392,7 +416,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 1 }}
-        className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-fog hover:text-accent transition-colors"
+        className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-fog transition-colors hover:text-accent lg:flex"
         aria-label="Scroll down"
       >
         <span className="font-code text-[10px] tracking-[0.3em] uppercase">Scroll</span>
