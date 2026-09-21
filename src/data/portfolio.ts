@@ -288,7 +288,7 @@ export const experience: Experience[] = [
   {
     role: "Full Stack Developer",
     company: "Staycold Solution",
-    period: "Jan 2026 – Present",
+    period: "Jan 2026 - Present",
     location: "Surat, Gujarat, India",
     mode: "Onsite",
     current: true,
@@ -301,7 +301,7 @@ export const experience: Experience[] = [
   {
     role: "AI/ML & Python Developer",
     company: "Kenstin Technologies",
-    period: "Dec 2025 – Jun 2026",
+    period: "Dec 2025 - Jun 2026",
     location: "Surat, Gujarat, India",
     mode: "Remote",
     bullets: [
@@ -317,14 +317,14 @@ export const education = [
   {
     degree: "Master of Computer Applications (MCA)",
     school: "GLS University",
-    period: "2024 – 2026",
+    period: "2024 - 2026",
     field: "Computer & Information Sciences",
     grade: "Grade: O",
   },
   {
     degree: "Bachelor's Degree",
     school: "Veer Narmad South Gujarat University",
-    period: "Jul 2021 – Jul 2024",
+    period: "Jul 2021 - Jul 2024",
     field: "Computer & Information Sciences",
     grade: "Grade: B",
   },

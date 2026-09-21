@@ -80,7 +80,7 @@ const PAIR_HOW: Record<string, string> = {
 
 const SKILL_INTRO: Partial<Record<string, string>> = {
   "LLM Integration":
-    "Production LLM features—models, tools, and guardrails users actually touch.",
+    "Production LLM features - models, tools, and guardrails users actually touch.",
   LangChain: "Composable AI pipelines: chains, tools, agents, and retrieval.",
   "OpenAI API": "Hosted models for chat, tools, embeddings, and voice.",
   "Agentic Workflows": "Multi-step AI that plans, calls tools, and finishes tasks.",
@@ -102,7 +102,7 @@ export function describeSkillPair(primary: string, related: string): string {
   return (
     PAIR_HOW[pairKey(primary, related)] ??
     PAIR_HOW[pairKey(related, primary)] ??
-    `Works with ${related} in shipped projects—APIs, data, and UI wired together in one pipeline.`
+    `Works with ${related} in shipped projects - APIs, data, and UI wired together in one pipeline.`
   );
 }
 
@@ -132,7 +132,7 @@ export type SkillPopoverBrief = {
   summary: string;
 };
 
-/** Compact copy for hover popover (about 3–4 lines). */
+/** Compact copy for hover popover (about 3-4 lines). */
 export function getSkillPopoverBrief(skill: string): SkillPopoverBrief {
   const { intro, relations } = getSkillPopoverContent(skill);
 
