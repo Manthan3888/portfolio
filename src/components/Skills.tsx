@@ -1,142 +1,143 @@
 "use client";
 
-import type { MouseEvent } from "react";
-import { motion } from "framer-motion";
-import {
-  FaBrain,
-  FaLayerGroup,
-  FaBolt,
-  FaDatabase,
-  FaCloud,
-  FaCartShopping,
-  FaArrowUpRightFromSquare,
-} from "react-icons/fa6";
+import { useMemo } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { skillCategories } from "@/data/portfolio";
-import { getLinkedSkills } from "@/lib/skillConnections";
+import { getSkillPopoverBrief } from "@/lib/skillRelationCopy";
 import Reveal, { staggerContainer, staggerItem } from "./ui/Reveal";
-import SkillLinkedTag from "./skills/SkillLinkedTag";
-import SkillConnectionRail from "./skills/SkillConnectionRail";
-import { SkillGraphProvider, useSkillGraph } from "./skills/SkillGraphContext";
+import SkillPopoverTag from "./skills/SkillPopoverTag";
+import { SkillStackProvider, useSkillStack } from "./skills/SkillStackContext";
 
-const iconMap: Record<string, React.ReactNode> = {
-  brain: <FaBrain />,
-  stack: <FaLayerGroup />,
-  bolt: <FaBolt />,
-  database: <FaDatabase />,
-  cloud: <FaCloud />,
-  cart: <FaCartShopping />,
+const STACK_SHORT_LABEL: Record<string, string> = {
+  "AI / ML & Generative AI": "AI & agents",
+  "Full-Stack Development": "Languages & frameworks",
+  "Automation & Workflow": "Automation & ops",
+  Databases: "Data & messaging",
+  "Cloud, DevOps & Tools": "Platform & services",
+  "CMS / E-commerce": "CMS & commerce",
 };
 
-function SkillCard({ cat, index }: { cat: (typeof skillCategories)[number]; index: number }) {
-  const { activeSkill } = useSkillGraph();
-  const linked = activeSkill ? getLinkedSkills(activeSkill) : [];
-  const isHot = Boolean(
-    activeSkill &&
-      (cat.skills.includes(activeSkill) || cat.skills.some((skill) => linked.includes(skill))),
-  );
-  const isCold = Boolean(activeSkill) && !isHot;
-
-  const onMove = (e: MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-    e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`);
-  };
+function StackHoverDetail() {
+  const { activeSkill } = useSkillStack();
 
   return (
-    <motion.div
-      variants={staggerItem}
-      onMouseMove={onMove}
-      data-hover
-      className={`card-sheen skill-graph-card group relative h-full rounded-2xl border bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-6 sm:p-7 transition-all duration-400 ${
-        isHot
-          ? "border-accent/35 shadow-[0_24px_60px_-28px_rgba(255,106,43,0.45)] z-[11]"
-          : isCold
-            ? "border-white/[0.05] opacity-[0.58] saturate-[0.85]"
-            : "border-white/[0.08] hover:-translate-y-2 hover:border-accent/40 hover:shadow-[0_30px_70px_-25px_rgba(255,106,43,0.45)]"
-      }`}
-    >
-      <div className="flex items-start justify-between">
-        <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 border border-accent/25 text-xl text-accent transition-transform duration-500 group-hover:rotate-[15deg] group-hover:scale-110">
-          {iconMap[cat.icon]}
-        </span>
-        <span className="font-code text-xs text-fog/60 group-hover:text-accent transition-opacity group-hover:opacity-0">
-          0{index + 1}
-        </span>
-      </div>
-
-      <h3 className="mt-5 font-display text-lg font-bold text-white group-hover:text-gradient transition-colors">
-        {cat.title}
-      </h3>
-      <p className="mt-1.5 text-[13px] text-fog leading-relaxed">{cat.blurb}</p>
-
-      <div className="relative z-[14] mt-5 flex flex-wrap gap-2">
-        {cat.skills.map((s, i) => (
+    <div className="mt-5 min-h-[7.5rem] sm:mt-6">
+      <AnimatePresence mode="wait">
+        {activeSkill ? (
           <motion.div
-            key={s}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 + i * 0.035, duration: 0.35 }}
+            key={activeSkill}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-xl border border-white/12 bg-white/[0.03] p-4 backdrop-blur-sm"
           >
-            <SkillLinkedTag skill={s} />
+            {(() => {
+              const detail = getSkillPopoverBrief(activeSkill);
+              return (
+                <>
+                  <p className="font-code text-[10px] uppercase tracking-[0.16em] text-accent">Works with</p>
+                  <p className="mt-1 font-display text-lg font-bold leading-snug text-white">{detail.skill}</p>
+                  <p className="mt-2 text-xs font-medium leading-snug text-slate-300">{detail.relatedLabel}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-fog">{detail.summary}</p>
+                </>
+              );
+            })()}
           </motion.div>
-        ))}
-      </div>
+        ) : (
+          <motion.p
+            key="hint"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="text-sm leading-relaxed text-fog"
+          >
+            Hover a skill for a short note on what it pairs with and how it ships in production.
+          </motion.p>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
-      <FaArrowUpRightFromSquare className="absolute top-6 right-6 h-4 w-4 text-transparent transition-all duration-300 group-hover:text-accent/70 translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100" />
-    </motion.div>
+function SkillBand({ cat, index }: { cat: (typeof skillCategories)[number]; index: number }) {
+  const label = STACK_SHORT_LABEL[cat.title] ?? cat.title;
+
+  return (
+    <motion.article
+      variants={staggerItem}
+      className="border-t border-white/[0.08] py-7 sm:py-9 md:py-10"
+    >
+      <div className="grid gap-4 sm:grid-cols-[minmax(0,11.5rem)_1fr] sm:gap-6 md:grid-cols-[minmax(0,13.5rem)_1fr] md:gap-10 lg:grid-cols-[minmax(0,15rem)_1fr]">
+        <header className="min-w-0">
+          <p className="font-code text-[11px] font-medium tracking-[0.24em] text-accent uppercase">
+            {String(index + 1).padStart(2, "0")}
+          </p>
+          <h3 className="mt-2 font-display text-[0.95rem] font-bold uppercase leading-snug tracking-[0.12em] text-white sm:text-base md:text-lg">
+            {label}
+          </h3>
+          <p className="mt-2 max-w-[16rem] text-xs leading-relaxed text-fog sm:text-[13px]">{cat.blurb}</p>
+        </header>
+
+        <div className="relative flex min-w-0 flex-wrap content-start gap-2 sm:gap-2.5">
+          {cat.skills.map((s) => (
+            <SkillPopoverTag key={s} skill={s} variant="stack" />
+          ))}
+        </div>
+      </div>
+    </motion.article>
   );
 }
 
 function SkillsContent() {
-  const { mapRootRef, setActiveSkill, activeSkill } = useSkillGraph();
+  const { setActiveSkill } = useSkillStack();
+  const skillCount = useMemo(
+    () => new Set(skillCategories.flatMap((c) => c.skills)).size,
+    [],
+  );
 
   return (
-    <section id="skills" className="relative py-24 md:py-32 scroll-mt-24">
-      <div className="absolute inset-0 bg-grid bg-grid-mask-full opacity-40 pointer-events-none" />
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <Reveal>
-          <div className="flex items-center gap-3">
-            <span className="font-code text-sm text-accent">02</span>
-            <span className="h-px w-10 bg-gradient-to-r from-accent to-transparent" />
-            <span className="eyebrow">Core technical stack</span>
-          </div>
-        </Reveal>
-        <div className="mt-5 flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
-          <Reveal delay={0.08}>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-[2.75rem] font-bold leading-[1.08] tracking-tight text-white max-w-2xl">
-              A full-stack toolkit, <span className="text-gradient">AI-native by default</span>.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.16}>
-            <p className="text-fog max-w-sm text-sm leading-relaxed">
-              From prompt engineering and vector retrieval to SSR frontends and cloud deploys: one engineer across the entire pipeline.
-            </p>
-          </Reveal>
-        </div>
+    <section
+      id="skills"
+      className="relative py-20 sm:py-24 md:py-32 scroll-mt-24"
+      onMouseLeave={() => setActiveSkill(null)}
+    >
+      <div className="pointer-events-none absolute inset-0 bg-grid bg-grid-mask-full opacity-35" />
 
-        <div
-          ref={mapRootRef}
-          className={activeSkill ? "skill-map-active relative overflow-x-clip" : "relative overflow-x-clip"}
-          onMouseLeave={(event) => {
-            const next = event.relatedTarget;
-            if (next instanceof Node && mapRootRef.current?.contains(next)) return;
-            setActiveSkill(null);
-          }}
-        >
-          <Reveal delay={0.1}>
-            <SkillConnectionRail />
-          </Reveal>
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="lg:grid lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:items-start lg:gap-x-12 xl:gap-x-16">
+          <div className="lg:sticky lg:top-28 lg:pb-8">
+            <Reveal>
+              <div className="flex items-center gap-3">
+                <span className="font-code text-sm text-accent">02</span>
+                <span className="h-px w-10 bg-gradient-to-r from-accent to-transparent" />
+                <span className="eyebrow">Core technical stack</span>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.06}>
+              <div className="mt-7 flex flex-wrap items-baseline gap-x-3 gap-y-1 sm:mt-9 sm:gap-x-4">
+                <h2 className="font-display text-[clamp(2.75rem,10vw,6.25rem)] font-bold uppercase leading-none tracking-tight text-white">
+                  STACK
+                </h2>
+                <span className="font-display text-2xl font-bold tabular-nums leading-none text-accent sm:text-3xl md:text-4xl">
+                  {skillCount}
+                </span>
+              </div>
+            </Reveal>
+
+            <StackHoverDetail />
+          </div>
 
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-60px" }}
-            className="relative grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
+            className="mt-10 border-b border-white/[0.08] lg:mt-0"
           >
             {skillCategories.map((cat, i) => (
-              <SkillCard key={cat.title} cat={cat} index={i} />
+              <SkillBand key={cat.title} cat={cat} index={i} />
             ))}
           </motion.div>
         </div>
@@ -147,8 +148,8 @@ function SkillsContent() {
 
 export default function Skills() {
   return (
-    <SkillGraphProvider>
+    <SkillStackProvider>
       <SkillsContent />
-    </SkillGraphProvider>
+    </SkillStackProvider>
   );
 }

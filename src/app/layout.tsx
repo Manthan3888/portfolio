@@ -94,7 +94,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           }}
         />
       </head>
-      <body className="bg-ink-950 text-slate-200 antialiased">{children}</body>
+      <body className="bg-ink-950 text-slate-200 antialiased">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{if("scrollRestoration" in history)history.scrollRestoration="manual";var h=location.hash;if(!h||h==="#home")window.scrollTo(0,0);}catch(e){}})();`,
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

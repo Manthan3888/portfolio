@@ -1,4 +1,4 @@
-/** Directed links between stack skills; expanded to two-way for hover highlights. */
+/** Directed links between stack skills; expanded to two-way for popover relations. */
 const SKILL_LINKS: Record<string, string[]> = {
   "LLM Integration": ["OpenAI API", "LangChain", "RAG", "Agentic Workflows"],
   LangChain: ["OpenAI API", "RAG", "Agentic Workflows", "Vector Databases"],

@@ -1,4 +1,5 @@
 import SmoothScroll from "@/components/providers/SmoothScroll";
+import ScrollRestore from "@/components/providers/ScrollRestore";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -17,6 +18,7 @@ import ScrollFooterPrompt from "@/components/ScrollFooterPrompt";
 export default function HomePage() {
   return (
     <main className="relative min-h-screen overflow-x-clip bg-ink-950">
+      <ScrollRestore />
       <SmoothScroll />
       <CustomCursor />
       <Header />
